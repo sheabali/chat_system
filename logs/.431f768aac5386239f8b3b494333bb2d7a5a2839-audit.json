@@ -1,0 +1,15 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 30
+    },
+    "auditLog": "C:\\Users\\Sheib Ali\\Downloads\\messenger\\messenger_app_backend\\logs\\.431f768aac5386239f8b3b494333bb2d7a5a2839-audit.json",
+    "files": [
+        {
+            "date": 1777354887061,
+            "name": "C:\\Users\\Sheib Ali\\Downloads\\messenger\\messenger_app_backend\\logs\\error-2026-04-28.log",
+            "hash": "1d9d1ad53272aca7b6643d8389540a5a5b2ae3177508e7ee7b6c248c2b185d5f"
+        }
+    ],
+    "hashType": "sha256"
+}

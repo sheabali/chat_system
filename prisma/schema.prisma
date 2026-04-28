@@ -1,0 +1,138 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id       String    @id @default(auto()) @map("_id") @db.ObjectId
+  name     String
+  email    String    @unique
+  password String
+  avatar   String?
+  bio      String?
+  isOnline Boolean   @default(false)
+  lastSeen DateTime?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  messages  Message[]
+  chats     ChatParticipant[]
+  locations LiveLocation[]
+  calls     CallParticipant[]
+}
+
+model Chat {
+  id          String  @id @default(auto()) @map("_id") @db.ObjectId
+  isGroup     Boolean @default(false)
+  name        String?
+  description String?
+  avatar      String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  participants ChatParticipant[]
+  messages     Message[]
+  calls        Call[]
+}
+
+model ChatParticipant {
+  id     String @id @default(auto()) @map("_id") @db.ObjectId
+  userId String @db.ObjectId
+  chatId String @db.ObjectId
+
+  role     ParticipantRole @default(MEMBER)
+  joinedAt DateTime        @default(now())
+
+  user User @relation(fields: [userId], references: [id])
+  chat Chat @relation(fields: [chatId], references: [id])
+
+  @@unique([userId, chatId])
+}
+
+enum ParticipantRole {
+  ADMIN
+  MEMBER
+}
+
+model Message {
+  id      String      @id @default(auto()) @map("_id") @db.ObjectId
+  content String?
+  fileUrl String?
+  type    MessageType @default(TEXT)
+
+  senderId String @db.ObjectId
+  chatId   String @db.ObjectId
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  sender User @relation(fields: [senderId], references: [id])
+  chat   Chat @relation(fields: [chatId], references: [id])
+}
+
+enum MessageType {
+  TEXT
+  IMAGE
+  AUDIO
+  VIDEO
+  FILE
+}
+
+enum CallType {
+  AUDIO
+  VIDEO
+}
+
+enum CallStatus {
+  ONGOING
+  MISSED
+  REJECTED
+  ENDED
+}
+
+model Call {
+  id          String    @id @default(auto()) @map("_id") @db.ObjectId
+  chatId      String    @db.ObjectId
+  type        CallType  @default(VIDEO)
+  status      CallStatus @default(ONGOING)
+  isGroupCall Boolean   @default(false)
+  startedAt   DateTime  @default(now())
+  endedAt     DateTime?
+
+  chat         Chat              @relation(fields: [chatId], references: [id])
+  participants CallParticipant[]
+}
+
+model CallParticipant {
+  id     String @id @default(auto()) @map("_id") @db.ObjectId
+  callId String @db.ObjectId
+  userId String @db.ObjectId
+
+  joinedAt DateTime  @default(now())
+  leftAt   DateTime?
+
+  call Call @relation(fields: [callId], references: [id])
+  user User @relation(fields: [userId], references: [id])
+
+  @@unique([callId, userId])
+}
+
+model LiveLocation {
+  id     String  @id @default(auto()) @map("_id") @db.ObjectId
+  userId String  @db.ObjectId
+  chatId String? @db.ObjectId
+
+  latitude  Float
+  longitude Float
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id])
+}

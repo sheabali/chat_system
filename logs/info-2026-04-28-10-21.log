@@ -1,0 +1,2 @@
+{"level":"info","message":"Request processed - SLOW: 967.60ms - GET /api/v1/users?searchTerm=Sheib","method":"GET","responseTime":"967.60ms","service":"default-service-name","statusCode":200,"timeCategory":"SLOW","timestamp":"2026-04-28 16:21:00","url":"/api/v1/users?searchTerm=Sheib"}
+{"level":"info","message":"Request processed - SLOW: 753.78ms - GET /api/v1/users?searchTerm=Sheib","method":"GET","responseTime":"753.78ms","service":"default-service-name","statusCode":200,"timeCategory":"SLOW","timestamp":"2026-04-28 16:21:48","url":"/api/v1/users?searchTerm=Sheib"}
