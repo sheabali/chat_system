@@ -6,7 +6,7 @@ import { ChatService } from "./chat.service";
 
 const createOneToOneChat = catchAsync(async (req: Request, res: Response) => {
   const userId = req.user.userId;
-  const result = await ChatService.createOneToOneChat(userId, req.body);
+  const result = await ChatService.createOneToOneChat(userId as string, req.body);
 
   sendResponse(res, {
     statusCode: httpStatus.CREATED,
@@ -18,7 +18,7 @@ const createOneToOneChat = catchAsync(async (req: Request, res: Response) => {
 
 const createGroupChat = catchAsync(async (req: Request, res: Response) => {
   const userId = req.user.userId;
-  const result = await ChatService.createGroupChat(userId, req.body);
+  const result = await ChatService.createGroupChat(userId as string, req.body);
 
   sendResponse(res, {
     statusCode: httpStatus.CREATED,
@@ -30,7 +30,7 @@ const createGroupChat = catchAsync(async (req: Request, res: Response) => {
 
 const getMyChats = catchAsync(async (req: Request, res: Response) => {
   const userId = req.user.userId;
-  const result = await ChatService.getMyChats(userId);
+  const result = await ChatService.getMyChats(userId as string);
 
   sendResponse(res, {
     statusCode: httpStatus.OK,
@@ -43,7 +43,7 @@ const getMyChats = catchAsync(async (req: Request, res: Response) => {
 const getChatById = catchAsync(async (req: Request, res: Response) => {
   const userId = req.user.userId;
   const { chatId } = req.params;
-  const result = await ChatService.getChatById(userId, chatId);
+  const result = await ChatService.getChatById(userId as string, chatId as string);
 
   sendResponse(res, {
     statusCode: httpStatus.OK,
@@ -56,7 +56,11 @@ const getChatById = catchAsync(async (req: Request, res: Response) => {
 const updateGroupChat = catchAsync(async (req: Request, res: Response) => {
   const userId = req.user.userId;
   const { chatId } = req.params;
-  const result = await ChatService.updateGroupChat(userId, chatId, req.body);
+  const result = await ChatService.updateGroupChat(
+    userId as string,
+    chatId as string,
+    req.body
+  );
 
   sendResponse(res, {
     statusCode: httpStatus.OK,
@@ -69,7 +73,11 @@ const updateGroupChat = catchAsync(async (req: Request, res: Response) => {
 const addParticipants = catchAsync(async (req: Request, res: Response) => {
   const userId = req.user.userId;
   const { chatId } = req.params;
-  const result = await ChatService.addParticipants(userId, chatId, req.body);
+  const result = await ChatService.addParticipants(
+    userId as string,
+    chatId as string,
+    req.body
+  );
 
   sendResponse(res, {
     statusCode: httpStatus.OK,
@@ -82,7 +90,11 @@ const addParticipants = catchAsync(async (req: Request, res: Response) => {
 const removeParticipant = catchAsync(async (req: Request, res: Response) => {
   const userId = req.user.userId;
   const { chatId, participantId } = req.params;
-  const result = await ChatService.removeParticipant(userId, chatId, participantId);
+  const result = await ChatService.removeParticipant(
+    userId as string,
+    chatId as string,
+    participantId as string
+  );
 
   sendResponse(res, {
     statusCode: httpStatus.OK,
@@ -95,7 +107,10 @@ const removeParticipant = catchAsync(async (req: Request, res: Response) => {
 const leaveGroupChat = catchAsync(async (req: Request, res: Response) => {
   const userId = req.user.userId;
   const { chatId } = req.params;
-  const result = await ChatService.leaveGroupChat(userId, chatId);
+  const result = await ChatService.leaveGroupChat(
+    userId as string,
+    chatId as string
+  );
 
   sendResponse(res, {
     statusCode: httpStatus.OK,
@@ -108,7 +123,7 @@ const leaveGroupChat = catchAsync(async (req: Request, res: Response) => {
 const deleteChat = catchAsync(async (req: Request, res: Response) => {
   const userId = req.user.userId;
   const { chatId } = req.params;
-  const result = await ChatService.deleteChat(userId, chatId);
+  const result = await ChatService.deleteChat(userId as string, chatId as string);
 
   sendResponse(res, {
     statusCode: httpStatus.OK,

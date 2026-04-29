@@ -1,0 +1,6 @@
+{"level":"info","message":"🔌 Socket Disconnected: HYlTfv80j8J7qjJyAAAD (User: 69f07e958bd6a7b82071a7f2)","service":"default-service-name","timestamp":"2026-04-29 16:16:28"}
+{"level":"info","message":"⚡ Socket Connected: zLRZljVmA0d6moTrAAAV (User: 69f07e958bd6a7b82071a7f2)","service":"default-service-name","timestamp":"2026-04-29 16:16:29"}
+{"level":"info","message":"Request processed - VERY FAST: 74.66ms - GET /api/v1/auth/me","method":"GET","responseTime":"74.66ms","service":"default-service-name","statusCode":304,"timeCategory":"VERY FAST","timestamp":"2026-04-29 16:16:29","url":"/api/v1/auth/me"}
+{"level":"info","message":"🔌 Socket Disconnected: T0gaMCL4qGai8VuJAAAS (User: 69f189731100d2ff087ee2d9)","service":"default-service-name","timestamp":"2026-04-29 16:16:31"}
+{"level":"info","message":"⚡ Socket Connected: _4tlB0xnHxjDbm2nAAAY (User: 69f189731100d2ff087ee2d9)","service":"default-service-name","timestamp":"2026-04-29 16:16:31"}
+{"level":"info","message":"Request processed - VERY FAST: 74.16ms - GET /api/v1/auth/me","method":"GET","responseTime":"74.16ms","service":"default-service-name","statusCode":200,"timeCategory":"VERY FAST","timestamp":"2026-04-29 16:16:31","url":"/api/v1/auth/me"}

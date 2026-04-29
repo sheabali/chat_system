@@ -1,0 +1,3 @@
+{"level":"info","message":"🔌 Socket Disconnected: jYI99G2kaw_aDcfgAAAG (User: 69f189731100d2ff087ee2d9)","service":"default-service-name","timestamp":"2026-04-29 16:11:49"}
+{"level":"info","message":"⚡ Socket Connected: ug_4u3PUyEFQKcWNAAAJ (User: 69f189731100d2ff087ee2d9)","service":"default-service-name","timestamp":"2026-04-29 16:11:49"}
+{"level":"info","message":"Request processed - VERY FAST: 76.50ms - GET /api/v1/auth/me","method":"GET","responseTime":"76.50ms","service":"default-service-name","statusCode":304,"timeCategory":"VERY FAST","timestamp":"2026-04-29 16:11:49","url":"/api/v1/auth/me"}

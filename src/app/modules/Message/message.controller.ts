@@ -7,7 +7,11 @@ import { MessageService } from "./message.service";
 const sendMessage = catchAsync(async (req: Request, res: Response) => {
   const userId = req.user.userId;
   const { chatId } = req.params;
-  const result = await MessageService.sendMessage(userId, chatId, req.body);
+  const result = await MessageService.sendMessage(
+    userId as string,
+    chatId as string,
+    req.body
+  );
 
   sendResponse(res, {
     statusCode: httpStatus.CREATED,
@@ -23,7 +27,12 @@ const getMessages = catchAsync(async (req: Request, res: Response) => {
   const page = Number(req.query.page) || 1;
   const limit = Number(req.query.limit) || 50;
 
-  const result = await MessageService.getMessages(userId, chatId, page, limit);
+  const result = await MessageService.getMessages(
+    userId as string,
+    chatId as string,
+    page,
+    limit
+  );
 
   res.status(httpStatus.OK).json({
     success: true,
@@ -37,9 +46,9 @@ const updateMessage = catchAsync(async (req: Request, res: Response) => {
   const userId = req.user.userId;
   const { chatId, messageId } = req.params;
   const result = await MessageService.updateMessage(
-    userId,
-    chatId,
-    messageId,
+    userId as string,
+    chatId as string,
+    messageId as string,
     req.body.content
   );
 
@@ -54,7 +63,11 @@ const updateMessage = catchAsync(async (req: Request, res: Response) => {
 const deleteMessage = catchAsync(async (req: Request, res: Response) => {
   const userId = req.user.userId;
   const { chatId, messageId } = req.params;
-  const result = await MessageService.deleteMessage(userId, chatId, messageId);
+  const result = await MessageService.deleteMessage(
+    userId as string,
+    chatId as string,
+    messageId as string
+  );
 
   sendResponse(res, {
     statusCode: httpStatus.OK,

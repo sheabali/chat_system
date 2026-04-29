@@ -97,12 +97,12 @@ enum CallStatus {
 }
 
 model Call {
-  id          String    @id @default(auto()) @map("_id") @db.ObjectId
-  chatId      String    @db.ObjectId
-  type        CallType  @default(VIDEO)
+  id          String     @id @default(auto()) @map("_id") @db.ObjectId
+  chatId      String     @db.ObjectId
+  type        CallType   @default(VIDEO)
   status      CallStatus @default(ONGOING)
-  isGroupCall Boolean   @default(false)
-  startedAt   DateTime  @default(now())
+  isGroupCall Boolean    @default(false)
+  startedAt   DateTime   @default(now())
   endedAt     DateTime?
 
   chat         Chat              @relation(fields: [chatId], references: [id])

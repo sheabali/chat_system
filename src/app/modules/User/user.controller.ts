@@ -24,7 +24,7 @@ const getUserById = catchAsync(async (req: Request, res: Response) => {
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: "User profile retrieved successfully",
+    message: "User profile retrieved successfully.",
     data: result,
   });
 });

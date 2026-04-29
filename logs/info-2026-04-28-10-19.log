@@ -1,1 +1,0 @@
-{"level":"info","message":"Request processed - VERY FAST: 76.24ms - GET /api/v1/users?searchTerm=Sheib","method":"GET","responseTime":"76.24ms","service":"default-service-name","statusCode":200,"timeCategory":"VERY FAST","timestamp":"2026-04-28 16:19:33","url":"/api/v1/users?searchTerm=Sheib"}
